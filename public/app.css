@@ -1,0 +1,23 @@
+body {
+    max-width: 600px;
+    background-color: azure;
+    margin: auto;
+    font-family: "sans-serif";
+}
+
+.article {
+    margin: 3rem 0;
+    line-height: 1rem;
+    background-color: aqua;
+    padding: 1rem;
+}
+
+.title {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.body {
+    margin-top: 2rem;
+    font-size: 20px;
+}
