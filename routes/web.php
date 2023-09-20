@@ -35,4 +35,4 @@ Route::get('posts/{id}', function ($slug) {
     return view('post',[
         'post' => Post::find($slug)
     ]);
-})->where('title', '[A-z_-]+');
+})->where('id', '[0-9]+');
