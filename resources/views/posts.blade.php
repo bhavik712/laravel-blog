@@ -5,14 +5,13 @@
         <link rel="stylesheet" href="/app.css">
     </head>
     <body>
-        <article class="article">
-            <div class="title"><a href="posts/introduction-to-php">Introduction to Php</a></div>
-            <div class="body">This is My first blog on Php.</div>
-        </article>
-        <article class="article">
-            <div class="title"><a href="posts/variable">Variable</a></div>
-            <div class="body">I have briefly discussed about Variable.</div>
-        </article>
+        <?php foreach($posts as $post): ?>
+            <article class="article">
+                <div class="title"><a href="posts/<?= $post->id ?>"><?= $post->title ?></a></div>
+                <div class="body"><?= $post->excerpt?></div>
+            </article>
+        <?php endforeach; ?>
+
         
     </body>
 </html>
