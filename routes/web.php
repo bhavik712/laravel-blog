@@ -20,19 +20,12 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('posts/{id}', function ($id) {
-    
-    // return $slug;
+//Route model binding 
+//if you want to bind another field can pass it as route link
+//here posts/{post:slug} or In Post class return this field from getRouteKey function
 
-    // $path = __DIR__."/../resources/posts/{$slug}.html";
-    
-    // if(!file_exists($path)){
-    //     return redirect('/');
-    // };
-    // $post = cache()->remember("posts.{$slug}",5,fn()=>file_get_contents($path));
-    
-    
+Route::get('posts/{post}', function (Post $post) {
     return view('post',[
-        'post' => Post::findOrFail($id)
+        'post' => $post
     ]);
-})->where('id', '[0-9]+');
+});
