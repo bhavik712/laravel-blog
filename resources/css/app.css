@@ -1,0 +1,11 @@
+body {
+    max-width: 600px;
+    background-color: azure;
+    margin: auto;
+}
+
+.article {
+    margin: 3rem 0;
+    line-height: 1rem;
+    background-color: aqua;
+}
