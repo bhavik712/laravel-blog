@@ -20,7 +20,7 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('posts/{id}', function ($slug) {
+Route::get('posts/{id}', function ($id) {
     
     // return $slug;
 
@@ -33,6 +33,6 @@ Route::get('posts/{id}', function ($slug) {
     
     
     return view('post',[
-        'post' => Post::find($slug)
+        'post' => Post::findOrFail($id)
     ]);
 })->where('id', '[0-9]+');
