@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
+use App\Models\Category;
+use App\Models\Author;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +18,7 @@ use App\Models\Post;
 
 Route::get('/', function () {
     return view('posts',[
-        'posts' => Post::all()
+        'posts' => Post::latest('id')->get()
     ]);
 });
 
@@ -29,3 +31,16 @@ Route::get('posts/{post}', function (Post $post) {
         'post' => $post
     ]);
 });
+
+Route::get('categories/{category:name}', function (Category $category) {
+    return view('posts',[
+        'posts' => $category->posts
+    ]);
+});
+
+Route::get('authors/{author:name}', function (Author $author) {
+    return view('posts',[
+        'posts' => $author->posts
+    ]);
+});
+
