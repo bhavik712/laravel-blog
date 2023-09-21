@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
+use App\Models\Category;
+use App\Models\Author;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,23 +18,29 @@ use App\Models\Post;
 
 Route::get('/', function () {
     return view('posts',[
-        'posts' => Post::all()
+        'posts' => Post::latest('id')->get()
     ]);
 });
 
-Route::get('posts/{id}', function ($slug) {
-    
-    // return $slug;
+//Route model binding 
+//if you want to bind another field can pass it as route link
+//here posts/{post:slug} or In Post class return this field from getRouteKey function
 
-    // $path = __DIR__."/../resources/posts/{$slug}.html";
-    
-    // if(!file_exists($path)){
-    //     return redirect('/');
-    // };
-    // $post = cache()->remember("posts.{$slug}",5,fn()=>file_get_contents($path));
-    
-    
+Route::get('posts/{post}', function (Post $post) {
     return view('post',[
-        'post' => Post::find($slug)
+        'post' => $post
     ]);
-})->where('id', '[0-9]+');
+});
+
+Route::get('categories/{category:name}', function (Category $category) {
+    return view('posts',[
+        'posts' => $category->posts
+    ]);
+});
+
+Route::get('authors/{author:name}', function (Author $author) {
+    return view('posts',[
+        'posts' => $author->posts
+    ]);
+});
+

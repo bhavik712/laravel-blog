@@ -1,63 +1,25 @@
 <?php
 
 namespace App\Models;
-use Illuminate\Support\Facades\File;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Spatie\YamlFrontMatter\YamlFrontMatter;
 
-class Post{
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-    public function __construct(public $title, public $excerpt, public $id, public $body){
+class Post extends Model
+{
 
-    }
-    public static function all(){
-        return cache()->rememberForever('allPosts',function(){
-            $files = File::files(resource_path("posts/"));
+    use HasFactory;
 
-            return collect($files)->map(fn($file)=>YamlFrontMatter::parseFile($file))->map(fn($document)=>new Post(
-                $document->title,
-                $document->excerpt,
-                $document->id,
-                $document->body()
-            ))->sortByDesc('id');
-        });
+    protected $with = ['category','author']; 
 
-        // return array_map(fn($file)=>$file->getContents(), $files);
-
-
+    public function category(){
+        return $this->belongsTo(Category::class);
+        
     }
 
-
-    public static function find($slug){
-        // $path = resource_path("posts/{$slug}.html");
+    public function author(){
+        return $this->belongsTo(Author::class);
         
-        $posts = static::all();
-        
-        $post = $posts->firstWhere('id', $slug);
-
-        if(!isset($post)){
-            throw New ModelNotFoundException();
-        };
-        
-        return $post;
-
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-?>

@@ -22,3 +22,8 @@ body {
     font-size: 20px;
     line-height: 2rem;
 }
+
+.category {
+    margin-top: 2rem;
+    font-size: 25px;
+}
