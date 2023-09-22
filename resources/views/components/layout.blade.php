@@ -1,5 +1,3 @@
-@props(['categories'])
-
 <!DOCTYPE html>
 
 <title>Laravel From Scratch Blog</title>
