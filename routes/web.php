@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\Author;
-
+use App\Http\Controllers\PostController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,24 +15,14 @@ use App\Models\Author;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('posts',[
-        'posts' => Post::latest('id')->get(),
-        'categories' => Category::all()
-    ]);
-});
+// go inside the Controller
+Route::get('/',[PostController::class ,'index']);
 
 //Route model binding 
 //if you want to bind another field can pass it as route link
 //here posts/{post:slug} or In Post class return this field from getRouteKey function
 
-Route::get('posts/{post}', function (Post $post) {
-    return view('post',[
-        'post' => $post,
-        'categories' => Category::all()
-    ]);
-});
+Route::get('posts/{post}',[PostController::class, 'show']);
 
 Route::get('categories/{category:name}', function (Category $category) {
     return view('posts',[
