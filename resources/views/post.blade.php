@@ -1,16 +1,6 @@
 <x-layout>
         <section class="px-6 py-8">
-            <nav class="md:flex md:justify-between md:items-center">
-                <div>
-                    <a href="/">
-                        <img src="/images/logo.svg" alt="Laracasts Logo" width="165" height="16">
-                    </a>
-                </div>
-
-                <div class="mt-8 md:mt-0">
-                    <a href="/" class="text-xs font-bold uppercase">Home Page</a>
-                </div>
-            </nav>
+          
 
             <main class="max-w-6xl mx-auto mt-10 lg:mt-20 space-y-6">
                 <article class="max-w-4xl mx-auto lg:grid lg:grid-cols-12 gap-x-10">
