@@ -4,21 +4,7 @@
         <span class="text-blue-500">Laravel From Scratch</span> News
     </h1>
 
-    <h2 class="inline-flex mt-2">
-        By Lary Laracore
-        <img
-            src="/images/lary-head.svg"
-            alt="Head of Lary the mascot"
-        />
-    </h2>
-
-    <p class="text-sm mt-14">
-        Another year. Another update. We're refreshing the popular
-        Laravel series with new content. I'm going to keep you guys up
-        to speed with what's going on!
-    </p>
-
-    <div class="space-y-2 lg:space-y-0 lg:space-x-4 mt-8">
+    <div class="space-y-2 lg:space-y-0 lg:space-x-4 mt-4">
        
         <!--  Category -->
         <div
@@ -29,7 +15,7 @@
                     {{ isset($currentCategory) ? $currentCategory->name : 'Categories' }}   
                 </button>
 
-                <div x-show="show" class=" mt-2 rounded absolute bg-gray-100 w-full min-w-32" style="display: none">
+                <div x-show="show" class=" mt-2 rounded absolute bg-gray-100 w-full min-w-32 max-h-25 overflow-auto" style="display: none">
                     <a href="/" class="block px-3 leading-6 hover:bg-blue-500 focus:bg-blue-500 hover:text-white">
                         All
                     </a>
